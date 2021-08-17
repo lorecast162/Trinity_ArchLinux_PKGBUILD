@@ -1,7 +1,9 @@
 */*/pkg
 */*/src
 */*/*.tar.bz2
+*/*/*.tar.xz
 */*/*.pkg.tar.xz
+*/*/*.pkg.tar.zst
 */*/*.sig
 */*/*.log
 */*/*.log.*
