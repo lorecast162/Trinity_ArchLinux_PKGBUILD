@@ -2,10 +2,11 @@
 # Contributor: Pawel 'l0ner' Soltys <pwslts@gmail.com>
 # Contributor: Calvin Morrison <MutantTurkey@gmail.com>
 # Contributor: David C. Rankin <drankinatty at gmail dot com>
+# Contributor: Lorenzo Cauli <lorenzocauli162 at gmail dot com>
 
 pkgbase=tde-tqt3
 pkgname=("$pkgbase" "${pkgbase}-docs")
-pkgver=14.0.5
+pkgver=14.0.10
 pkgrel=1
 pkgdesc="The TQt3 gui toolkit - based on TDE upstream Qt3"
 arch=('i686' 'x86_64')
@@ -22,14 +23,14 @@ makedepends=('libcups'
 	'libmng'
 	'xorg-xrandr'
 	'libxft')
-source=("http://mirror.ppa.trinitydesktop.org/trinity/releases/R${pkgver}/dependencies/tqt3-R${pkgver}.tar.bz2")
-md5sums=('26b4a59e1f2c24807658503e5ed6ab27')
+source=("http://mirror.ppa.trinitydesktop.org/trinity/releases/R${pkgver}/main/dependencies/tqt3-trinity-${pkgver}.tar.xz")
+md5sums=('47d8495fcf444c5db2cf56843be3f746')
 
 _prefix="/opt/trinity/tqt3"
 
 build() {
 
-  cd ${srcdir}/dependencies/tqt3
+  cd ${srcdir}/tqt3-trinity-${pkgver}
 
   # These are probably arch-specific. They were present in old qt3
   # PKGBULD, they were present in kdemod3 PKGBUILD, they are present
@@ -49,7 +50,7 @@ build() {
   sed -i "s|read acceptance|acceptance=yes|" configure
 
   msg "Setting enviroment variables..."
-  export QTDIR="${srcdir}/dependencies/tqt3"
+  export QTDIR="${srcdir}/tqt3-trinity-${pkgver}"
   export PATH=${QTDIR}/bin:${PATH}
   export LD_LIBRARY_PATH=${QTDIR}/lib:${LD_LIBRARY_PATH}
   export QMAKESPEC=$QTDIR/mkspecs/linux-g++
@@ -91,6 +92,8 @@ build() {
     -thread \
     -dlopen-opengl \
     -no-ipv6
+
+msg "SED MAY ERROR"
 
   # 64bit fixes pulled from extras/qt3 PKGBUILD
   # this is Arch-specific
