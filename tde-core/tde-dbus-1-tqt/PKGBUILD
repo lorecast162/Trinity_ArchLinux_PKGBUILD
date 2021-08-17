@@ -2,9 +2,10 @@
 # Contributor: Pawel 'l0ner' Soltys <pwslts@gmail.com>
 # Contributor: Calvin Morrison <mutantturkey@gmail.com>
 # Contributor: David C. Rankin <drankinatty at gmail dot com>
+# Contributor: Lorenzo Cauli <lorenzocauli162 at gmail dot com>
 
 pkgname=tde-dbus-1-tqt
-pkgver=14.0.5
+pkgver=14.0.10
 pkgrel=1
 pkgdesc="Trinity D-Bus TQtInterface Wrapper - from TDE upstream GIT"
 arch=('i686' 'x86_64')
@@ -17,8 +18,8 @@ provides=('dbus-1-tqt')
 conflicts=('trinity-dbus-1-tqt')
 replaces=('trinity-dbus-1-tqt' 'trinity-dbus-1-qt3' 'dbus-1-qt3' 'tde-dbus-tqt-1')
 options=('staticlibs' 'libtool' '!strip')
-source=("http://mirror.ppa.trinitydesktop.org/trinity/releases/R${pkgver}/dependencies/dbus-1-tqt-R${pkgver}.tar.bz2")
-md5sums=('727b960ac3fbb5bf92d53215e70f58a6')
+source=("http://mirror.ppa.trinitydesktop.org/trinity/releases/R${pkgver}/main/dependencies/dbus-1-tqt-trinity-${pkgver}.tar.xz")
+md5sums=('4954efb83544c72272ba803eb44b72ec')
 install='trinity-dbus-1-tqt.install'
 
 build() {
@@ -28,7 +29,7 @@ build() {
    cd build
 
    msg "Starting cmake..."
-   cmake ${srcdir}/dependencies/${pkgname#*-} \
+   cmake ${srcdir}/dbus-1-tqt-trinity-14.0.10 \
       -DCMAKE_INSTALL_PREFIX=${TDEDIR}
 
    msg "Building - $pkgname..."
